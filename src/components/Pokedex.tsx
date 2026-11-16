@@ -18,14 +18,24 @@ import { type PokemonListItem } from "../types";
 //     }
 // ]
 
+interface PokemonResults { count: number; next: string | null; previous: string | null; results: PokemonListItem[] }
+
 export default function Pokedex() {
   const [pokemonArray, setPokemonArray] = useState<PokemonListItem[]>([]);
   useEffect(() => {
     const loadPokemon = async () => {
-      fetch(`${import.meta.env.VITE_API_URL}/pokemon?limit=20`)
-        .then((res) => res.json())
-        .then((data) => setPokemonArray(data.results));
-    };
+        try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon?limit=20`)
+        
+        if (!response.ok) {
+            throw new Error("could not load pokemon");            
+        }
+        const data: PokemonResults = await response.json()
+        setPokemonArray(data.results)
+    } catch (err) {
+        err instanceof Error&& console.log("error:"+err.message);
+    }}
+    
     loadPokemon();
   }, []);
 
