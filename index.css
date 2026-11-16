@@ -16,6 +16,9 @@
   box-sizing: border-box;
 }
 
+
+Vitest, React Testing Library, user-event, jest-dom and jsdom
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -29,7 +32,7 @@ body {
   padding: var(--space);
 }
 
-.book-list {
+.pokemon-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -38,7 +41,7 @@ body {
   gap: var(--space);
 }
 
-.book-card {
+.pokemon-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +52,7 @@ body {
   border-radius: var(--radius);
 }
 
-.book-card h3 {
+.pokemon-card h3 {
   margin: 0 0 0.25rem;
 }
 

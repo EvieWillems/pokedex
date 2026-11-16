@@ -1,10 +1,9 @@
-import type {Book} from '../types'
 
 
-function ResultCount(props:{books:Book[]}) {
+function ResultCount(props:{pokemonList:any[]}) {
     return (
-        <h3 className ="result-count">
-            {"Showing " + props.books.length +" books"}
+        <h3>
+            {"Showing " + props.pokemonList.length +" Pokemon of 151"}
         </h3>
     )
 }
