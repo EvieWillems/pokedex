@@ -8,8 +8,7 @@ export class ApiError extends Error {
 }
 
 export const apiGet = async <T>(
-  path: string,
-  signal?: AbortSignal,
+  path: string
 ): Promise<T> => {
   const response = await fetch(path);
 

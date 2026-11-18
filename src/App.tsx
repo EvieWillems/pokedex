@@ -1,10 +1,11 @@
 import "./App.css";
-import Pokedex from "./components/Pokedex";
+import AppRoutes from "./AppRoutes";
 
 function App() {
   return (
     <main>
-      <Pokedex />
+      {/* <Pokedex /> */}
+      <AppRoutes/>
     </main>
   );
 }
