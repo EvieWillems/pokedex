@@ -16,5 +16,5 @@ export const getPokemonList = (
 
 export const getPokemon = (
   nameOrId: string | number): Promise<Pokemon> => {
-  return apiGet(import.meta.env.VITE_API_URL+nameOrId)
+  return apiGet(import.meta.env.VITE_API_URL+"/pokemon/"+nameOrId)
 };

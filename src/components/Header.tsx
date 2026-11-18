@@ -5,7 +5,7 @@ function Header() {
     <header>
       <h1>Welcome to the world of Pokemon!!!</h1>
       <p> Gotta chach them all!!!!</p>
-      <NavLink
+      {/* <NavLink
         to="/"
         className={({ isActive }) =>
           isActive ? "nav-link active" : "nav-link"
@@ -22,7 +22,7 @@ function Header() {
         }
       >
         <p>Pokedex</p>
-      </NavLink>
+      </NavLink> */}
     </header>
   );
 }

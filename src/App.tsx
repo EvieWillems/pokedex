@@ -6,7 +6,7 @@ function App() {
   return (
     <main>
       {/* <Pokedex /> */}
-      <Header />
+      {/* <Header /> */}
       <AppRoutes />
     </main>
   );
