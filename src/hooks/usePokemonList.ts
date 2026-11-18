@@ -1,12 +1,7 @@
 import { type PokemonListItem } from "../types";
 import { useEffect, useState } from "react";
+import {getPokemonList} from "../api/pokemon"
 
-interface PokemonResults {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: PokemonListItem[];
-}
 
 type PokedexState =
   | { status: "loading" }
@@ -19,28 +14,26 @@ export function usePokemonList() {
   });
   const [reloadCount, setReloadCount] = useState(0);
   useEffect(() => {
+    let ignore = false
     const loadPokemon = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/pokemon?limit=20`,
-        );
-
-        if (!response.ok) {
-          throw new Error("could not load pokemon");
-        }
-
-        const data: PokemonResults = await response.json();
-        setPokedexState({ status: "success", pokedexResult: data.results });
+        const response = await getPokemonList({url:"/pokemon?limit=20"})
+        
+        if (!ignore) {setPokedexState({ status: "success", pokedexResult: response.results })};
       } catch (err) {
-        err instanceof Error && console.log("error:" + err.message);
+        if (!ignore) {err instanceof Error && console.log("error:" + err.message);
         setPokedexState({
           status: "error",
           message: "unable to catch any Pokemon",
-        });
+        })};
       }
     };
 
     loadPokemon();
+
+    return (() => {
+      ignore = true;
+    });
   }, [reloadCount]);
 
   const refetch = () => setReloadCount((count) => count + 1);
