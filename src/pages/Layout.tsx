@@ -18,7 +18,7 @@ export default function Layout() {
       </NavLink>
 
       <NavLink
-        to="/favourite"
+        to="/team"
         className={({ isActive }) =>
           isActive ? "nav-link active" : "nav-link"
         }

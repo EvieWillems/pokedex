@@ -1,8 +1,8 @@
 import Pokedex from "../components/Pokedex";
 
-export default function PokedexPage () {
+export default function PokedexPage (props:{url:string}) {
     return (
-        <Pokedex/>
+        <Pokedex url={props.url}/>
 
     )
 }

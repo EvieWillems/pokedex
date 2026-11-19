@@ -2,8 +2,8 @@ import PokemonGrid from "./PokemonGrid";
 import ResultCount from "./ResultCount";
 import { usePokemonList } from "../hooks/usePokemonList";
 
-export default function Pokedex() {
-  const { pokedexState, refetch } = usePokemonList();
+export default function Pokedex(props:{url:string}) {
+  const { pokedexState, refetch } = usePokemonList(props.url);
 
   if (pokedexState.status === "error") {
     return (

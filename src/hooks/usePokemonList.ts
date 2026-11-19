@@ -8,7 +8,7 @@ type PokedexState =
   | { status: "error"; message: string }
   | { status: "success"; pokedexResult: PokemonListItem[] };
 
-export function usePokemonList() {
+export function usePokemonList(url:string) {
   const [pokedexState, setPokedexState] = useState<PokedexState>({
     status: "loading",
   });
@@ -17,9 +17,9 @@ export function usePokemonList() {
     let ignore = false
     const loadPokemon = async () => {
       try {
-        const response = await getPokemonList({url:"/pokemon?limit=20"})
+        const response = await getPokemonList({url:url})
         
-        if (!ignore) {setPokedexState({ status: "success", pokedexResult: response.results })};
+        if (!ignore && !(response instanceof Array)) { setPokedexState({ status: "success", pokedexResult: response.results })};
       } catch (err) {
         if (!ignore) {err instanceof Error && console.log("error:" + err.message);
         setPokedexState({
