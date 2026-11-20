@@ -18,7 +18,7 @@ export default function AppRoutes() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="pokedex" element={<PokedexPage url={first20url}/>} />
-        <Route path="team" element={<TeamPage url={teamurl+"/public/users/"+userTeam+"/team"} />} />
+        <Route path="team" element={<TeamPage url={teamurl+"/api/team"} />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="pokedex/:pokemonId" element={<SinglePokemonPage />} />
       </Route>

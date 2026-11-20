@@ -63,7 +63,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       const {access_token} = await response.json()
       const user = await fetchCurrentUser(access_token)
 
-      if (user) writeToken(access_token)
+      writeToken(access_token)
       setUserState({ status:"success", user })
 
     }

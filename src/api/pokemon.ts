@@ -1,6 +1,6 @@
 //import.meta.env.VITE_API_URL
 import type { Pokemon, PokemonResults, TeamList} from "../types"
-import {apiGet} from "./client"
+import {apiGet, apiGetAuth} from "./client"
 
 
 export interface PokemonQuery {
@@ -9,7 +9,7 @@ export interface PokemonQuery {
 
 export const getPokemonList = (
   query: PokemonQuery
-): Promise<PokemonResults|TeamList> => {console.log(query.url); return apiGet<PokemonResults|TeamList>(query.url);}
+): Promise<PokemonResults|TeamList> => {console.log(query.url); return apiGetAuth<PokemonResults|TeamList>(query.url);}
 
 
 
